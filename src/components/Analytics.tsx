@@ -48,7 +48,7 @@ const Analytics: React.FC = () => {
   // Fetch dữ liệu phân tích theo môn
   useEffect(() => {
     setLoadingSubject(true);
-    fetch('https://cors-anywhere.herokuapp.com/https://vietnamnet.vn/newsapi-edu/EducationStudentScore/ReportBySubject?ComponentId=COMPONENT002297&PageId=95be1729ac2745ba9e873ef1f8f66254&type=2&year=2025')
+    fetch('/api/proxy-report-by-subject')
       .then(res => res.json())
       .then(json => {
         if (json?.data?.model?.scores?.length) {
@@ -67,7 +67,7 @@ const Analytics: React.FC = () => {
   // Fetch dữ liệu phân tích theo khối
   useEffect(() => {
     setLoadingKhoi(true);
-    fetch('https://cors-anywhere.herokuapp.com/https://vietnamnet.vn/newsapi-edu/EducationStudentScore/ReportBySubjectGroup?ComponentId=COMPONENT002297&PageId=95be1729ac2745ba9e873ef1f8f66254&type=2&year=2025')
+    fetch('/api/proxy-report-by-subject-group')
       .then(res => res.json())
       .then(json => {
         if (json?.data?.model?.items?.length) {
@@ -86,7 +86,7 @@ const Analytics: React.FC = () => {
   // Fetch dữ liệu phân tích theo tỉnh/thành
   useEffect(() => {
     setLoadingProvince(true);
-    fetch('https://cors-anywhere.herokuapp.com/https://vietnamnet.vn/newsapi-edu/EducationStudentScore/ReportByProvince?ComponentId=COMPONENT002297&PageId=95be1729ac2745ba9e873ef1f8f66254&type=2&year=2025')
+    fetch('/api/proxy-report-by-province')
       .then(res => res.json())
       .then(json => {
         if (json?.data?.model?.items?.length) {
@@ -105,7 +105,7 @@ const Analytics: React.FC = () => {
   // Fetch dữ liệu phân tích tỉnh/thành top điểm TB
   useEffect(() => {
     setLoadingProvinceTopAvg(true);
-    fetch('https://cors-anywhere.herokuapp.com/https://vietnamnet.vn/newsapi-edu/EducationStudentScore/ReportByProvinceTopAvg?ComponentId=COMPONENT002297&PageId=95be1729ac2745ba9e873ef1f8f66254&pageSize=5&year=2025')
+    fetch('/api/proxy-report-by-province-top-avg')
       .then(res => res.json())
       .then(json => {
         if (json?.data?.model?.items?.length) {
@@ -124,7 +124,7 @@ const Analytics: React.FC = () => {
   // Fetch dữ liệu top tỉnh/thành có nhiều điểm 10
   useEffect(() => {
     setLoadingProvinceTopScore(true);
-    fetch('https://cors-anywhere.herokuapp.com/https://vietnamnet.vn/newsapi-edu/EducationStudentScore/ReportProvinceByScoreOfSubject?ComponentId=COMPONENT002297&PageId=95be1729ac2745ba9e873ef1f8f66254&pageSize=10&score=10&type=2&year=2025')
+    fetch('/api/proxy-report-province-by-score-of-subject')
       .then(res => res.json())
       .then(json => {
         if (json?.data?.model?.items?.length) {

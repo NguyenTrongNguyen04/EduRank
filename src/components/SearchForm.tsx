@@ -52,7 +52,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, searchHistory }) => {
   const fetchKhoiRanking = async (sbd: string) => {
     for (const khoi of KHOI_LIST) {
       try {
-        const res = await fetch(`https://api.xephangdiemthi.edu.vn/api/v1/khoi/khoi=${khoi}/sbd=${sbd}`);
+        const res = await fetch(`/api/proxy-khoi?khoi=${khoi}&sbd=${sbd}`);
         if (!res.ok) continue;
         const json = await res.json();
         if (json.data) {
@@ -75,7 +75,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, searchHistory }) => {
       try {
         // Nếu là số báo danh, gọi API
         if (searchType === 'id' && /^\d+$/.test(query.trim())) {
-          const res = await fetch(`https://api.xephangdiemthi.edu.vn/api/v1/score/sbd=${query.trim()}`);
+          const res = await fetch(`/api/proxy-score?sbd=${query.trim()}`);
           const json = await res.json();
           if (json.valid && json.data) {
             setScoreData(json.data);
